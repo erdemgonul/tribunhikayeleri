@@ -1,0 +1,31 @@
+
+<div class="container center">
+    <h2>Anılarını Paylaşmak İçin İlk Yapman Gereken Bir Hesap Yaratmak</h2>
+    <div class="todown-container">
+
+
+      <mat-form-field>
+        <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput  placeholder="İsmin" [(ngModel)]="username">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput  placeholder="Şifren" [(ngModel)]="password">
+
+
+      </mat-form-field>
+      <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked">Checked</mat-checkbox>
+
+
+      <button mat-button (click)="createAccount(email,username,password,checked)">İlerle!</button>
+
+    </div>
+
+
+
+
+
+</div>
