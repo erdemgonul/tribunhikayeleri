@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import {CommunicatorService} from '../communicator.service'
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -7,29 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
   email:string;
   checked:boolean;
   password:string;
-  constructor(private router: Router) { }
+  errorUser:boolean;
+  errorName:string;
+  constructor(private router: Router,private communicator:CommunicatorService) {
+  this.errorUser=false;
+}
 
   ngOnInit() {
+    this.errorUser=false;
   }
 
-  signInAccount(email,password,checked){
-    if(checked){
-      var userData = {email:email,name: name, password:password};
-      userData = JSON.stringify(userData);
-      console.log(userData);
+  signInAccount(email:string,password:string,checked:boolean){
 
-      this.router.navigateByUrl('');
+      var userData = {'username': email, 'password' : password};
+      var userJSON = JSON.stringify(userData);
 
-    }
-    else{
-    
-    }
+      this.communicator.signUser(email,password).pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigateByUrl('');
+                },
+                error => {
+                    console.log("fuck");
+                    this.errorUser=true;
+                    this.errorName="kullanıcı adı ya da parola yanlış.";
+                });
   }
+
+
 }

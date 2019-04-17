@@ -3,12 +3,13 @@
 <h2>Oturum Aç</h2>
 
   <mat-form-field>
+
     <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
   </mat-form-field>
   <mat-form-field>
     <input matInput  placeholder="Şifren" [(ngModel)]="password">
 
-
+    <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
   </mat-form-field>
   <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked">Beni Hatırla</mat-checkbox>
 

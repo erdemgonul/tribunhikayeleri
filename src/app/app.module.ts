@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { HttpClientModule }    from '@angular/common/http';
 import{FormsModule,ReactiveFormsModule} from '@angular/forms'
 //Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -39,14 +40,17 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
+import { CreateStoryComponent } from './create-story/create-story.component';
 @NgModule({
   declarations: [
     AppComponent,
     CreateUserComponent,
     HomeComponent,
-    SigninComponent
+    SigninComponent,
+    CreateStoryComponent
   ],
   imports: [
+    HttpClientModule,
      FormsModule,
      ReactiveFormsModule,
     BrowserModule,

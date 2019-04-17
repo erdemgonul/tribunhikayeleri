@@ -1,0 +1,19 @@
+
+
+    <h2>Bir Hikaye Paylaş</h2>
+    <div class="todown-container">
+
+
+
+      <mat-form-field>
+        <input matInput  placeholder="başlık" [(ngModel)]="topic">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="hikayeni yaz" class="storytext" [(ngModel)]="storyText"></textarea>
+      </mat-form-field>
+      <mat-checkbox id="anonim" class=".ng-valid" [(ngModel)]="isAnonym">anonim olarak yaz</mat-checkbox>
+
+
+      <button mat-button (click)="submitStory(topic,storyText,isAnonym)">Paylaş!</button>
+
+    </div>
