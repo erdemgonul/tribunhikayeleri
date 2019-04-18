@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
-
+import {CommunicatorService} from '../communicator.service'
 
 const httpOptions = {
 headers: new HttpHeaders({
@@ -20,42 +20,18 @@ export class CreateStoryComponent implements OnInit {
   isAnonym:boolean;
 
   baseUrl="http://localhost:8080/";
-  constructor(private router:Router,private http: HttpClient) {
+  constructor(private router:Router,private http: HttpClient,private communicator:CommunicatorService) {
 
    }
 
   ngOnInit() {
   }
   submitStory(topic:string,storyText:string,isAnonym:boolean){
-    var storyData;
     if(!isAnonym){
-      storyData={
-        'user':'rup',
-        'topic':topic,
-        'storytext':storyText,
-      }
+      this.communicator.createTopic(topic,storyText,false);
     }else{
-      storyData={
-        'user':'anonym',
-        'topic':topic,
-        'storytext':storyText,
-      }
+      this.communicator.createTopic(topic,storyText,true);
     }
-    var storyJSON = JSON.stringify(storyData);
-    console.log(storyJSON);
 
-
-      const req = this.http.post(this.baseUrl +'topic',
-      storyJSON,httpOptions
-    )
-        .subscribe(
-          res => {
-            console.log("success!");
-          },
-          err => {
-            console.log("Error occured");
-          });
-      }
-
-
+  }
 }
