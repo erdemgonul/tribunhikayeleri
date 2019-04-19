@@ -1,33 +1,36 @@
 
-<div class="container center">
-    <h2>Anılarını Paylaşmak İçin İlk Yapman Gereken Bir Hesap Yaratmak</h2>
-    <div class="todown-container">
+<h2 style="text-align:center">Anılarını Paylaşmak İçin İlk Yapman Gereken Bir Hesap Yaratmak</h2>
+<div class="container" style="width:40%">
+  <div class="row">
 
+  </div>
 
-      <mat-form-field>
-        <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
-      </mat-form-field>
+  <div class="row">
+    <mat-form-field>
+      <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <mat-label>İsmin</mat-label>
+      <input matInput id="username" placeholder=""  [(ngModel)]="username">
+      <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <input matInput  placeholder="Şifren" [(ngModel)]="password">
+    </mat-form-field>
+  </div>
+  <div class="row">
 
-      <mat-form-field>
-        <mat-label>İsmin</mat-label>
-        <input matInput id="username" placeholder=""  [(ngModel)]="username">
-        <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput  placeholder="Şifren" [(ngModel)]="password">
-
-
-      </mat-form-field>
-      <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked">Checked</mat-checkbox>
-
-
-      <button mat-button (click)="createAccount(email,username,password,checked)">İlerle!</button>
-
+    <div class="col-auto mr-auto">
+        <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked">Checked</mat-checkbox>
     </div>
-
-
-
+    <div class="col-auto">
+      <button mat-button (click)="createAccount(email,username,password,checked)">İlerle!</button>
+    </div>
+  </div>
 
 
 </div>

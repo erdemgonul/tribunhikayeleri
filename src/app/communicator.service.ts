@@ -80,7 +80,10 @@ export class CommunicatorService {
               console.log("Error occured");
             });
       }
-
+  getThreads(x:string):Observable<any>{
+          console.log(this.baseUrl +'topic/' + x + '?page=0');
+          return this.http.get(this.baseUrl +'topic/' + x + '?page=0');
+  }
 
   logout() {
         // remove user from local storage to log user out

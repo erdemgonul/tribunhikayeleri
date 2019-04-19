@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h2>{{storyTopic}}</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-auto mr-auto">
+      <h5><a href="#">{{storyAuthor}}</a></h5>
+    </div>
+    <div class="col-auto">
+      <h5><a href="#">{{publishDate}}</a></h5>
+    </div>
+  </div>
+
+  <div class="row">
+      <p >{{storyContent}}</p>
+  </div>
+
+
+  <div class="row">
+    <button mat-button (click)="likeStory()">Beğen!</button>
+    <button mat-button (click)="likeStory()">Paylaş!</button>
+  </div>
+
+</div>

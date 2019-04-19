@@ -1,19 +1,30 @@
 
-<div class="todown-container">
-<h2>Oturum Aç</h2>
+<div class="container" style="width:40%">
 
-  <mat-form-field>
+  <div class="row">
+    <h2>Oturum Aç</h2>
+  </div>
+  <div class="row">
+    <mat-form-field>
 
-    <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput  placeholder="Şifren" [(ngModel)]="password">
+      <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <input matInput  placeholder="Şifren" [(ngModel)]="password">
 
-    <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
-  </mat-form-field>
-  <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked">Beni Hatırla</mat-checkbox>
+      <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
+    </mat-form-field>
+  </div>
 
+  <div class="  row">
 
-  <button mat-button (click)="signInAccount(email,password,checked)">Giriş Yap!</button>
-
+    <div class="col-auto mr-auto">
+      <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked">Beni Hatırla</mat-checkbox>
+    </div>
+    <div class="col-auto">
+      <button mat-button (click)="signInAccount(email,password,checked)">Giriş Yap!</button>
+    </div>
+  </div>
 </div>
