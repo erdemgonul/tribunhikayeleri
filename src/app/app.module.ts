@@ -42,6 +42,7 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { StoryComponent } from './story/story.component';
+import { LatestThreadsComponent } from './latest-threads/latest-threads.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { StoryComponent } from './story/story.component';
     HomeComponent,
     SigninComponent,
     CreateStoryComponent,
-    StoryComponent
+    StoryComponent,
+    LatestThreadsComponent
   ],
   imports: [
     HttpClientModule,

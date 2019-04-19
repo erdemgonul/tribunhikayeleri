@@ -51,11 +51,12 @@ export class CommunicatorService {
     const req = this.http.post(this.baseUrl +'topic',
     {
       "name":topicname,
+      "content":content,
     },httpOptions
     )
       .subscribe(
         res => {
-          this.createThread(content,topicname,isAnonym);
+
         },
         err => {
           console.log("Error occured");
@@ -84,7 +85,9 @@ export class CommunicatorService {
           console.log(this.baseUrl +'topic/' + x + '?page=0');
           return this.http.get(this.baseUrl +'topic/' + x + '?page=0');
   }
-
+  readRecentThreads(): Observable<any> {
+      return this.http.get<any>(this.baseUrl + 'threads/recent?page=0');
+    }
   logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
