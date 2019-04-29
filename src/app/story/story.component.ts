@@ -24,8 +24,8 @@ export class StoryComponent implements OnInit {
 
     console.log(this.topicUrl);
     this.communicator.getThreads(this.topicUrl).subscribe((thread) => {
-            let data=thread['threadDTOs'][0];
-            this.storyTopic=data.topicName;
+            let data=thread;
+            this.storyTopic=data.name;
             this.storyContent=data.content;
             this.storyAuthor=data.username;
             this.likeCount=data.likeCount;

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:80px;margin-top:30px;border-radius:7px;padding: 2px 15px 2px 15px;">
+<nav id="navigationbar" class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="http://localhost:4200/" style="font-size:30px;">tribün hikayeleri</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,8 +17,10 @@
       </li>
   </ul>
     <form class="form-inline my-2 my-lg-0" id="searchbar">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="parameter" name="searchInput">
+
     </form>
+    <button  class="btn btn-primary" style="width:75px;" (click)="search(parameter)">Ara!</button>
   </div>
 
   <div *ngIf="!isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -47,9 +49,9 @@
                         </mat-form-field>
                          <div class="help-block text-right" style="margin-top:10px;"><a href="">Forget the password ?</a></div>
                       </div>
-                         <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked" style="font-size:15px;" name="checked" >Beni Hatırla</mat-checkbox>
+                         <mat-checkbox id="usersignbox" class=".ng-valid" [(ngModel)]="checkedlogin" style="font-size:15px;" name="checkedlogin" >Beni Hatırla</mat-checkbox>
                       <div class="form-group">
-                        <button  class="btn btn-primary btn-block" (click)="signInAccount(email,password,checked)">Giriş Yap!</button>
+                        <button  class="btn btn-primary btn-block" (click)="signInAccount(email,password,checkedlogin)">Giriş Yap!</button>
                       </div>
 
                    </form>

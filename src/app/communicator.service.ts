@@ -93,11 +93,14 @@ export class CommunicatorService {
             });
       }
   getThreads(x:string):Observable<any>{
-          console.log(this.baseUrl +'topic/' + x + '?page=0');
-          return this.http.get(this.baseUrl +'topic/' + x + '?page=0');
+          console.log(this.baseUrl +'topic/' + x);
+          return this.http.get(this.baseUrl +'topic/' + x );
   }
-  readRecentThreads(): Observable<any> {
-      return this.http.get<any>(this.baseUrl + 'threads/recent?page=0');
+  searchAtTopics(parameter:string):Observable<any>{
+          return this.http.get(this.baseUrl + "topics/search?topicName="  + parameter);
+  }
+  readRecentTopics(): Observable<any> {
+      return this.http.get<any>(this.baseUrl + "topics/recent?page=0");
     }
   logout() {
         // remove user from local storage to log user out

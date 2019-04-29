@@ -13,8 +13,9 @@ export class NavbarComponent implements OnInit {
   errorName;
   isSigned=false;
   username;
+  parameter;
   constructor(private router: Router,private communicator:CommunicatorService) {
-
+      
    }
 
   ngOnInit() {
@@ -23,12 +24,12 @@ export class NavbarComponent implements OnInit {
     this.username=this.communicator.currentUser.username;
     }
   }
-  signInAccount(email:string,password:string,checked:boolean){
+  signInAccount(email:string,password:string,checkedlogin:boolean){
 
       var userData = {'username': email, 'password' : password};
       var userJSON = JSON.stringify(userData);
 
-      this.communicator.signUser(email,password,checked).pipe(first())
+      this.communicator.signUser(email,password,checkedlogin).pipe(first())
             .subscribe(
                 data => {
 
@@ -39,6 +40,10 @@ export class NavbarComponent implements OnInit {
                     this.errorUser=true;
                     this.errorName="kullanıcı adı ya da parola yanlış.";
                 });
+  }
+  search(parameter:string){
+            this.router.navigateByUrl('search/'+parameter);
+
   }
   signOutAccount(){
     this.communicator.logout();

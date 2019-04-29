@@ -28,6 +28,7 @@ this.errorUser=false;
 
   createAccount(email:string,username:string,password:string,checked:boolean){
     if(checked){
+      console.log("hey");
       document.getElementById('useragreementbox').style.color=""
       var userData = { "username":username,"password": username};
       var userJSON = JSON.stringify(userData);
@@ -50,6 +51,7 @@ this.errorUser=false;
 
     }
     else{
+      console.log("wtf");
       document.getElementById('useragreementbox').style.color="red";
     }
   }
