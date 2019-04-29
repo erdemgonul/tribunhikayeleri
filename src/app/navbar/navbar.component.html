@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:80px;margin-top:30px;border-radius:7px;padding: 2px 15px 2px 15px;">
+  <a class="navbar-brand" href="http://localhost:4200/" style="font-size:30px;">tribün hikayeleri</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav">
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hikayeler</a>
+        <div class="dropdown-menu bg-light">
+          <a class="dropdown-item" href="#">Çok Okunanlar</a>
+          <a class="dropdown-item" href="#">Son Çıkanlar</a>
+          <a class="dropdown-item" href="#">Geçmişten Gelenler</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Senin Hikayen</a>
+        </div>
+      </li>
+  </ul>
+    <form class="form-inline my-2 my-lg-0" id="searchbar">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    </form>
+  </div>
+
+  <div *ngIf="!isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signup">Kaydol</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="dropdown-toggle dropdown-item nav-link" data-toggle="dropdown">Giriş Yap <span class="caret"></span></a>
+        <ul id="login-dp" class="dropdown-menu">
+          <li>
+             <div class="row">
+                <div class="col-md-12">
+
+
+                   <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                      <div class="form-group">
+                        <mat-form-field>
+                          <input matInput  placeholder="Mail Adresin" [(ngModel)]="email" name="mail">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group">
+                        <mat-form-field>
+                          <input matInput  placeholder="Şifren" [(ngModel)]="password" name="password">
+                          <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
+                        </mat-form-field>
+                         <div class="help-block text-right" style="margin-top:10px;"><a href="">Forget the password ?</a></div>
+                      </div>
+                         <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked" style="font-size:15px;" name="checked" >Beni Hatırla</mat-checkbox>
+                      <div class="form-group">
+                        <button  class="btn btn-primary btn-block" (click)="signInAccount(email,password,checked)">Giriş Yap!</button>
+                      </div>
+
+                   </form>
+                </div>
+             </div>
+          </li>
+        </ul>
+      </li>
+</ul>
+</div>
+<div *ngIf="isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link">{{username}}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="signOutAccount()">Çıkış Yap</a>
+    </li>
+</ul>
+</div>
+
+</nav>

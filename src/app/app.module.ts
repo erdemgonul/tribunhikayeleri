@@ -43,6 +43,7 @@ import { SigninComponent } from './signin/signin.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { StoryComponent } from './story/story.component';
 import { LatestThreadsComponent } from './latest-threads/latest-threads.component';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { LatestThreadsComponent } from './latest-threads/latest-threads.componen
     SigninComponent,
     CreateStoryComponent,
     StoryComponent,
-    LatestThreadsComponent
+    LatestThreadsComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,

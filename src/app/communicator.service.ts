@@ -17,9 +17,15 @@ var httpOptions = {
 })
 export class CommunicatorService {
   currentUser;
+  autoSigned;
+  isUserSigned;
   baseUrl="http://127.0.0.1:8080/";
-  constructor(private http: HttpClient) {
-     this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
+  constructor(private http: HttpClient,private router:Router) {
+    if(localStorage.getItem("currentUser")!=null){
+      this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
+      this.autoSigned=true;
+      this.isUserSigned=true;
+    }
   }
 
 
@@ -28,15 +34,19 @@ export class CommunicatorService {
       map((response: Response) =>JSON.stringify(response)));
   }
 
-  signUser(email,password) : Observable<any>{
+  signUser(email,password,checked) : Observable<any>{
     httpOptions.headers= httpOptions.headers.set('Authorization',"Basic " + btoa(email + ":" + password));
     return this.http.post(this.baseUrl + 'login',{},httpOptions).pipe(map(user => {
-        // login successful if there's a jwt token in the response
         if (user) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
             var token="Basic " + btoa(email+":"+password);
-            localStorage.setItem("currentUser",JSON.stringify({"username":email,"token": token}));
-            this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
+            this.isUserSigned=true;
+            if (checked) {
+                localStorage.setItem("currentUser",JSON.stringify({"username":email,"token": token}));
+                this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
+            } else {
+                sessionStorage.setItem("currentUser",JSON.stringify({"username":email,"token": token}));
+                this.currentUser=JSON.parse(sessionStorage.getItem("currentUser"));
+            }
         }
 
         return user;
@@ -56,7 +66,8 @@ export class CommunicatorService {
     )
       .subscribe(
         res => {
-
+          console.log("successful");
+          this.router.navigateByUrl(topicname);
         },
         err => {
           console.log("Error occured");
@@ -90,7 +101,10 @@ export class CommunicatorService {
     }
   logout() {
         // remove user from local storage to log user out
+        this.isUserSigned=false;
+        this.currentUser=null;
         localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
   }
 }
 /*

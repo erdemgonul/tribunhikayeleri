@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {CommunicatorService} from '../communicator.service'
-import { Observable, of, BehaviorSubject } from 'rxjs';
 import { first } from 'rxjs/operators';
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class SigninComponent implements OnInit {
+export class NavbarComponent implements OnInit {
 
-  email:string;
-  checked:boolean;
-  password:string;
-  errorUser:boolean;
-  errorName:string;
+  errorUser;
+  errorName;
+  isSigned=false;
+  username;
   constructor(private router: Router,private communicator:CommunicatorService) {
-  this.errorUser=false;
-}
+
+   }
 
   ngOnInit() {
-    this.errorUser=false;
+    if(this.communicator.isUserSigned){
+    this.isSigned=this.communicator.isUserSigned;
+    this.username=this.communicator.currentUser.username;
+    }
   }
-
   signInAccount(email:string,password:string,checked:boolean){
 
       var userData = {'username': email, 'password' : password};
@@ -31,7 +31,8 @@ export class SigninComponent implements OnInit {
       this.communicator.signUser(email,password,checked).pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigateByUrl('');
+
+                    this.ngOnInit();
                 },
                 error => {
                     console.log("fuck");
@@ -39,6 +40,10 @@ export class SigninComponent implements OnInit {
                     this.errorName="kullanıcı adı ya da parola yanlış.";
                 });
   }
+  signOutAccount(){
+    this.communicator.logout();
+    this.isSigned=false;
+    this.ngOnInit();
 
-
+  }
 }
