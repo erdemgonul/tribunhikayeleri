@@ -73,12 +73,9 @@ export class CommunicatorService {
           console.log("Error occured");
         });
   }
-  createThread(content,topicname,isAnonym){
-        if(!isAnonym)
-          httpOptions.headers= httpOptions.headers.set('Authorization',this.currentUser.token);
-        else
-          httpOptions.headers= httpOptions.headers.set('Authorization',"Basic " + btoa("anonim:anonim"));
-        const req = this.http.post(this.baseUrl +'thread',
+  createComment(content,topicname){
+        httpOptions.headers= httpOptions.headers.set('Authorization',this.currentUser.token);
+        const req = this.http.post(this.baseUrl +'comment',
         {
           "content": content,
           "topicName": topicname
@@ -92,15 +89,17 @@ export class CommunicatorService {
               console.log("Error occured");
             });
       }
-  getThreads(x:string):Observable<any>{
-          console.log(this.baseUrl +'topic/' + x);
+getComments(x:string):Observable<any>{
+        return this.http.get(this.baseUrl +'topic/' + x );
+}
+  getTopic(x:string):Observable<any>{
           return this.http.get(this.baseUrl +'topic/' + x );
   }
   searchAtTopics(parameter:string):Observable<any>{
           return this.http.get(this.baseUrl + "topics/search?topicName="  + parameter);
   }
   readRecentTopics(): Observable<any> {
-      return this.http.get<any>(this.baseUrl + "topics/recent?page=0");
+          return this.http.get<any>(this.baseUrl + "topics/recent?page=0");
     }
   logout() {
         // remove user from local storage to log user out

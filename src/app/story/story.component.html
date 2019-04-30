@@ -22,4 +22,45 @@
     <button mat-button (click)="likeStory()">Paylaş!</button>
   </div>
 
+  <div class="row" style="border-top:1px solid black;margin-top:50px;padding-top:50px;">
+    <h4>Yorumlar</h4>
+  </div>
+
+
+  <div  class="comment" *ngFor="let comment of comments;let i=index">
+
+    <div class="row" id="row-custom">
+      <div class="col-auto mr-auto" id="authorCommentText">
+        <h5><a href="#" style="color:black">{{comment.createdBy}}</a></h5>
+      </div>
+      <div class="col-auto">
+        <p>{{comment.createdOn}}</p>
+      </div>
+      </div>
+      <div class="row" id="row-custom">
+          <p >{{comment.content}}</p>
+      </div>
+      <div class="row" id="row-custom">
+        <button mat-button (click)="likeComment()">Beğen!</button>
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+  <div class="row" id="comment-creator" style="padding-top:20px;">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="yorum yap" class="commenttext" [(ngModel)]="commentText"></textarea>
+          </mat-form-field>
+  </div>
+  <div class="row justify-content-end" id="comment-creator">
+      <button mat-button (click)="submitComment(storyTopic,commentText,isAnonym)">Yorumla!</button>
+  </div>
+
+
+
 </div>

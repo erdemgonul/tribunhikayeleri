@@ -25,6 +25,9 @@ export class SearchResultsComponent implements OnInit {
     this.communicator.searchAtTopics(this.topicUrl).subscribe(
       data => { console.log(data); // Data which is returned by call
                 let topics=data;
+                for(var i=0;i<topics.length;i++){
+                  topics[i].createdOn=topics[i].createdOn.substr(0,topics[i].createdOn.lastIndexOf('T'));
+                }
                 this.stories=topics;
                 console.log("siktir");
                 console.log(this.stories[0]);

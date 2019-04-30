@@ -12,7 +12,10 @@ export class LatestThreadsComponent implements OnInit {
 
   stories=[];
 
-  constructor(private router: Router,private communicator:CommunicatorService) { }
+  constructor(private router: Router,private communicator:CommunicatorService) {
+
+    //Refresh Component When Navigating to Same Route
+   }
 
   ngOnInit() {
     this.readRecentTopics();
@@ -20,13 +23,15 @@ export class LatestThreadsComponent implements OnInit {
   readRecentTopics(){
 
     this.communicator.readRecentTopics().subscribe(
-      data => { console.log(data); // Data which is returned by call
+      data => {
+                // Data which is returned by call
                 let topics=data["topicDTOs"];
+                for(var i=0;i<topics.length;i++){
+                  topics[i].createdOn=topics[i].createdOn.substr(0,topics[i].createdOn.lastIndexOf('T'));
+                }
                 this.stories=topics;
-                console.log("siktir");
-                console.log(topics);
       },
-      error => {  
+      error => {
          // Error if any
       },
       ()=> {}// Here call is completed. If you wish to do something

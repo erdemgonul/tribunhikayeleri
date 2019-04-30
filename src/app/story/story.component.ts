@@ -13,7 +13,8 @@ export class StoryComponent implements OnInit {
   storyAuthor:string;
   likeCount:number;
   publishDate:string;
-
+  comments=[];
+  commentText:string;
   constructor(private router: Router,private communicator:CommunicatorService) {
     this.topicUrl=window.location.href;
     this.topicUrl=this.topicUrl.substr(this.topicUrl.lastIndexOf('/')+1,this.topicUrl.length);
@@ -23,15 +24,19 @@ export class StoryComponent implements OnInit {
     console.log("ee");
 
     console.log(this.topicUrl);
-    this.communicator.getThreads(this.topicUrl).subscribe((thread) => {
+    this.communicator.getTopic(this.topicUrl).subscribe((thread) => {
             let data=thread;
             this.storyTopic=data.name;
             this.storyContent=data.content;
             this.storyAuthor=data.username;
             this.likeCount=data.likeCount;
-            this.publishDate=data.createdOn;
+            this.publishDate=data.createdOn.substr(0,data.createdOn.lastIndexOf('T'));
 
       })
+  }
+
+  submitComment(storyTopic,commentText){
+      this.communicator.createComment(commentText,storyTopic);
   }
 
 

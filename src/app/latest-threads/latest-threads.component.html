@@ -1,20 +1,20 @@
 <div class="container">
-  <div  class="x" *ngFor="let story of stories;let i=index">
-    <div class="row">
-      <h2>{{story.name}}</h2>
+  <div  class="story" *ngFor="let story of stories;let i=index">
+    <div class="row" id="row-custom">
+      <h2><a [routerLink]="story.name" style="color:black">{{story.name}}</a></h2>
     </div>
-    <div class="row">
-      <div class="col-auto mr-auto">
-        <h5><a href="#">{{story.createdBy}}</a></h5>
+    <div class="row" id="row-custom">
+      <div class="col-auto mr-auto" id="authorText">
+        <h5><a href="#" style="color:black">{{story.createdBy}}</a></h5>
       </div>
       <div class="col-auto">
-        <h5><a href="#">{{story.createdOn}}</a></h5>
+        <p>{{story.createdOn}}</p>
       </div>
       </div>
-      <div class="row">
-          <p >{{story.content}}</p>
+      <div class="row" id="row-custom">
+          <p >{{story.content}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
       </div>
-      <div class="row">
+      <div class="row" id="row-custom">
         <button mat-button (click)="likeStory()">Beğen!</button>
         <button mat-button (click)="likeStory()">Paylaş!</button>
       </div>
