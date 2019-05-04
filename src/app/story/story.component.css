@@ -5,3 +5,17 @@ mat-form-field{
 #comment-creator{
   width:70%;
 }
+#authorText{
+  padding-left:1px;
+}
+#authorText{
+  padding-left:1px;
+}
+.story{
+  margin-bottom:50px;
+  border-bottom: 1px solid grey;
+  padding-bottom:50px;
+}
+#row-custom{
+  margin:0 0 0 0 ;
+}

@@ -31,7 +31,7 @@ export class StoryComponent implements OnInit {
             this.storyid=data.id;
             this.storyTopic=data.name;
             this.storyContent=data.content;
-            this.storyAuthor=data.username;
+            this.storyAuthor=data.createdBy;
             this.likeCount=data.likeCount;
             this.publishDate=data.createdOn.substr(0,data.createdOn.lastIndexOf('T'));
 

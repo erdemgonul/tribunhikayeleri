@@ -8,13 +8,20 @@ background-color: #ffffff;
 margin-bottom:50px;
 border-radius:0px;
 padding: 5px 15px 5px 15px;
-background-color: #006400;
+background-color: #3b3b3b;
+
 }
+
 #bottomnavigationbar a{
-  color: #B5DDA8 !important;
+  color:#ffffff !important;
+}
+#dropdownmenu a{
+  color:inherit !important;
 }
 a{
-  color:#777777 !important;
+  font-size:1rem;
+  line-height: 1.5;
+  font-weight: 400;
 }
 .navbar-brand{
   color:#000000 !important;
@@ -70,7 +77,7 @@ a{
     }
 }
 #searchbar{
-  margin-left:40px;
+  margin-right:20px;
 }
 
 .right {
@@ -85,7 +92,7 @@ input::-webkit-search-cancel-button {
 }
 
 input[type=search] {
-  background: #ededed url('../../assets/search-icon.png') no-repeat 10px center;
+  background: #ffffff url('../../assets/search-icon.png') no-repeat 10px center;
   background-size: 20px;
   width: 20px;
   height: 20px;
@@ -116,12 +123,9 @@ input[type=search] {
 input[type=search]:focus {
   width: 300px;
   background-color: #fff;
-  border-color: #66CC75;
+  border-color: #ccc;
   padding-left: 40px;
   cursor: auto;
-  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-  -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-  box-shadow: 0 0 5px rgba(109, 207, 246, .5);
 }
 
 #search input[type=search]:hover {
@@ -144,6 +148,7 @@ input[type=search]:focus {
 
 .close
 {
+
   z-index:10;
   margin-left:-3rem;
   margin-right:1rem;
