@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {CommunicatorService} from '../communicator.service'
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-story',
   templateUrl: './story.component.html',
@@ -9,6 +10,7 @@ import {CommunicatorService} from '../communicator.service'
 export class StoryComponent implements OnInit {
   topicUrl:string;
   storyTopic:string;
+  storyid:number;
   storyContent:string;
   storyAuthor:string;
   likeCount:number;
@@ -26,6 +28,7 @@ export class StoryComponent implements OnInit {
     console.log(this.topicUrl);
     this.communicator.getTopic(this.topicUrl).subscribe((thread) => {
             let data=thread;
+            this.storyid=data.id;
             this.storyTopic=data.name;
             this.storyContent=data.content;
             this.storyAuthor=data.username;
@@ -34,7 +37,16 @@ export class StoryComponent implements OnInit {
 
       })
   }
+  likeStory(){
+      this.communicator.likeStory(this.storyid).pipe(first()).subscribe(
+        data => {
+            this.likeCount++;
+        },
+        err => {
+            console.log("fuck");
+        });
 
+  }
   submitComment(storyTopic,commentText){
       this.communicator.createComment(commentText,storyTopic);
   }

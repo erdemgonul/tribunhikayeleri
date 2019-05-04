@@ -53,7 +53,6 @@ export class CommunicatorService {
       }));
     }
   createTopic(topicname,content,isAnonym){
-    this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
     if(!isAnonym)
       httpOptions.headers= httpOptions.headers.set('Authorization',this.currentUser.token);
     else
@@ -100,7 +99,14 @@ getComments(x:string):Observable<any>{
   }
   readRecentTopics(): Observable<any> {
           return this.http.get<any>(this.baseUrl + "topics/recent?page=0");
-    }
+  }
+  likeStory(storyid) : Observable<any>{
+    httpOptions.headers= httpOptions.headers.set('Authorization',this.currentUser.token);
+    return this.http.post(this.baseUrl +'topic/like/'+storyid,{},httpOptions).pipe(map(like => {
+        console.log("success");
+        return like;
+  } ))
+}
   logout() {
         // remove user from local storage to log user out
         this.isUserSigned=false;

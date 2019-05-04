@@ -14,7 +14,7 @@ export class SearchResultsComponent implements OnInit {
   topicUrl;
   constructor(private router: Router,private communicator:CommunicatorService) {
     this.topicUrl=window.location.href;
-    this.topicUrl=this.topicUrl.substr(this.topicUrl.lastIndexOf('/')+1,this.topicUrl.length);
+    this.topicUrl=this.topicUrl.substr(this.topicUrl.lastIndexOf('/')+1,this.topicUrl.length).replace(' ','-');
 
     //Refresh Component When Navigating to Same Route
     this.router.routeReuseStrategy.shouldReuseRoute = function () {

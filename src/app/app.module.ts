@@ -45,6 +45,10 @@ import { StoryComponent } from './story/story.component';
 import { LatestThreadsComponent } from './latest-threads/latest-threads.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+//URL serialize
+import {UrlSerializer} from '@angular/router';
+import {CustomUrlSerializer} from './CustomUrlSerializer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +100,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
  MatSortModule,
 MatPaginatorModule
   ],
-  providers: [],
+  providers: [{ provide: UrlSerializer, useClass: CustomUrlSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
