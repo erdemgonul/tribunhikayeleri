@@ -11,7 +11,7 @@ export class LatestThreadsComponent implements OnInit {
 
 
   stories=[];
-
+  hasProfilePicture=false;
   constructor(private router: Router,private communicator:CommunicatorService) {
 
     //Refresh Component When Navigating to Same Route
