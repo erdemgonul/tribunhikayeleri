@@ -20,6 +20,7 @@ export class CommunicatorService {
   autoSigned;
   isUserSigned;
   baseUrl="http://127.0.0.1:8080/";
+
   constructor(private http: HttpClient,private router:Router) {
     if(localStorage.getItem("currentUser")!=null){
       this.currentUser=JSON.parse(localStorage.getItem("currentUser"));

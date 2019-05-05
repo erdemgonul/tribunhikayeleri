@@ -9,8 +9,6 @@
   </button>
 
 
-
-
   <div *ngIf="!isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0" id="searchbar">
       <input #search type="search"  [placeholder]="filled?'Search':''" [ngClass]="{'filled':filled}" [(ngModel)]="parameter"

@@ -16,7 +16,6 @@ export class CreateUserComponent implements OnInit {
   username:string;
   password:string;
   imgAsBase64;
-  imageType;
   errorUser:boolean;
   errorName:string;
   baseUrl="http://localhost:8080/";
@@ -33,7 +32,7 @@ this.errorUser=false;
     if(checked){
       console.log("hey");
       document.getElementById('useragreementbox').style.color=""
-      var userData = { "username":username,"password": username,"base64ProfilePicture":this.imgAsBase64,"imageType":this.imageType};
+      var userData = { "username":username,"password": username,"base64ProfilePicture":this.imgAsBase64};
       var userJSON = JSON.stringify(userData);
 
       this.communicator.createUser(userJSON).subscribe(
@@ -65,8 +64,6 @@ this.errorUser=false;
       let image = new Image();
 
       reader.onload =  (event) =>{
-        console.log("ssst");
-        this.imageType=files[0].type;
         let fileReader = event.target as FileReader;
         //image.src = fileReader.result;
         //image.width = 150;
