@@ -1,26 +1,35 @@
 <div class="container">
-  <div class="row" id="row-custom">
+
+
+  <div class="row" id="row-custom" style="margin-bottom:20px;">
     <h2>{{storyTopic}}</h2>
   </div>
 
-  <div class="row" id="row-custom">
-    <div class="col-auto mr-auto" id="authorText">
-      <h5><a href="#">{{storyAuthor}}</a></h5>
+  <div class="row justify-content-start" id="row-custom">
+    <div class="col-xs-1" id="pp-div">
+
+      <img src="../assets/defaultprofilepicture.jpg" alt="..." class="img-thumbnail" width="80" height="80" id="pp-image">
     </div>
-    <div class="col-auto">
-      <p>{{publishDate}}</p>
+    <div class="col-xs-1" style="margin-left:10px;">
+      <div class="row">
+
+        <h5><a href="#">{{storyAuthor}}</a></h5>
+      </div>
+      <div class="row">
+        <p>{{publishDate}}</p>
+      </div>
     </div>
   </div>
 
-  <div class="row" id="row-custom">
+  <div class="row" id="row-custom" style="margin-top:50px;">
       <p >{{storyContent}}</p>
   </div>
 
 
-  <div class="row">
-    <p >{{likeCount}}</p>
-    <button mat-button (click)="likeStory()">Beğen!</button>
-    <button mat-button (click)="likeStory()">Paylaş!</button>
+  <div class="row align-items-center" id="socialDiv">
+    <i class="far fa-thumbs-up fa-2x">{{likeCount}}</i>
+    <button mat-button (click)="likeStory()" class="likeButton">Beğen!</button>
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
   </div>
 
   <div class="row" style="border-top:1px solid black;margin-top:50px;padding-top:50px;">

@@ -19,3 +19,24 @@ mat-form-field{
 #row-custom{
   margin:0 0 0 0 ;
 }
+#pp-div{
+  margin-right: 10px;
+}
+#socialDiv{
+  margin:0 0 0 0 ;
+  border: 1px solid #dee2e6;
+  padding: .25rem;
+  border-radius: .25rem;
+}
+#socialDiv * {
+  margin-right: 20px;
+}
+.likeButton{
+  background-color:#563D7C;
+  color:#ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+}
