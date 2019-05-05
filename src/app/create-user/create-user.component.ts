@@ -15,9 +15,11 @@ export class CreateUserComponent implements OnInit {
   checked:boolean;
   username:string;
   password:string;
+  imgAsBase64;
   errorUser:boolean;
   errorName:string;
   baseUrl="http://localhost:8080/";
+    imageuploaded;
   constructor(private router: Router,private communicator:CommunicatorService) {
 this.errorUser=false;
  }
@@ -30,7 +32,7 @@ this.errorUser=false;
     if(checked){
       console.log("hey");
       document.getElementById('useragreementbox').style.color=""
-      var userData = { "username":username,"password": username};
+      var userData = { "username":username,"password": username,"base64ProfilePicture":this.imgAsBase64};
       var userJSON = JSON.stringify(userData);
 
       this.communicator.createUser(userJSON).subscribe(
@@ -55,4 +57,26 @@ this.errorUser=false;
       document.getElementById('useragreementbox').style.color="red";
     }
   }
+  readfiles(files){
+      console.log('files from readfiles -  ',files[0]);
+      const reader = new FileReader();
+      let image = new Image();
+
+      reader.onload =  (event) =>{
+        console.log("ssst");
+        let fileReader = event.target as FileReader;
+        //image.src = fileReader.result;
+        //image.width = 150;
+        //this.imageuploaded="<img src='" +fileReader.result + "'>";
+        //reader.result diyince dönüyo  o arrayi buranın içinde yapman lazım
+        console.log("RESULT:",reader.result);
+        this.imgAsBase64= btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result as ArrayBuffer)));
+
+      };
+      reader.readAsArrayBuffer(files[0]);
+
+    }//readfiles
+    imageChange(event){
+      this.readfiles(event.target.files);
+    }//imageChange
 }
