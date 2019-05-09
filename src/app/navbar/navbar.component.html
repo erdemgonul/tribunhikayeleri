@@ -1,105 +1,109 @@
+
+
+<div class="mainNav">
 <div class="container">
+  <nav id="topnavigationbar" class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" (click)="navigateToHome()" style="font-size:30px;" href="javascript:">tribün hikayeleri</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
+    <div *ngIf="!isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0" id="searchbar">
+        <input #search type="search"  [placeholder]="filled?'Search':''" [ngClass]="{'filled':filled}" [(ngModel)]="parameter"
+           (click)="filled=!filled" (blur)="filled=search.value?true:false" (keyup)="onKey($event)" list="osman" autocomplete="off" name="searchbar" >
+           <button class="close" *ngIf="filled" (click)="search.value='';filled=false" >X</button>
 
-<nav id="topnavigationbar" class="navbar navbar-expand-lg navbar-light ">
-  <a class="navbar-brand" (click)="navigateToHome()" style="font-size:30px;" href="javascript:">tribün hikayeleri</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        <datalist id="osman">
+        <option *ngFor="let topic of topicList" [value]="topic">
+        </datalist>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="navigateToSignUp()" href="javascript:">Kaydol</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="javascript:" class="dropdown-toggle dropdown-item nav-link" data-toggle="dropdown">Giriş Yap <span class="caret"></span></a>
+          <ul id="login-dp" class="dropdown-menu">
+            <li>
+               <div class="row">
+                  <div class="col-md-12">
 
 
-  <div *ngIf="!isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                     <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                        <div class="form-group">
+                          <mat-form-field>
+                            <input matInput  placeholder="Mail Adresin" [(ngModel)]="email" name="mail">
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                          <mat-form-field>
+                            <input matInput  placeholder="Şifren" [(ngModel)]="password" name="password">
+                            <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
+                          </mat-form-field>
+                           <div class="help-block text-right" style="margin-top:10px;"><a href="">Forget the password ?</a></div>
+                        </div>
+                           <mat-checkbox id="usersignbox" class=".ng-valid" [(ngModel)]="checkedlogin" style="font-size:15px;" name="checkedlogin" >Beni Hatırla</mat-checkbox>
+                        <div class="form-group">
+                          <button  class="btn btn-primary btn-block" (click)="signInAccount(email,password,checkedlogin)">Giriş Yap!</button>
+                        </div>
+
+                     </form>
+                  </div>
+               </div>
+            </li>
+          </ul>
+        </li>
+  </ul>
+  </div>
+  <div *ngIf="isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0" id="searchbar">
       <input #search type="search"  [placeholder]="filled?'Search':''" [ngClass]="{'filled':filled}" [(ngModel)]="parameter"
          (click)="filled=!filled" (blur)="filled=search.value?true:false" (keyup)="onKey($event)" list="osman" autocomplete="off" name="searchbar" >
-         <button class="close" *ngIf="filled" (click)="search.value='';filled=false" >X</button>
 
       <datalist id="osman">
       <option *ngFor="let topic of topicList" [value]="topic">
       </datalist>
     </form>
-    <ul class="nav navbar-nav navbar-right">
-
-      <li class="nav-item">
-        <a class="nav-link" (click)="navigateToSignUp()" href="javascript:">Kaydol</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="javascript:" class="dropdown-toggle dropdown-item nav-link" data-toggle="dropdown">Giriş Yap <span class="caret"></span></a>
-        <ul id="login-dp" class="dropdown-menu">
-          <li>
-             <div class="row">
-                <div class="col-md-12">
-
-
-                   <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                      <div class="form-group">
-                        <mat-form-field>
-                          <input matInput  placeholder="Mail Adresin" [(ngModel)]="email" name="mail">
-                        </mat-form-field>
-                      </div>
-                      <div class="form-group">
-                        <mat-form-field>
-                          <input matInput  placeholder="Şifren" [(ngModel)]="password" name="password">
-                          <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
-                        </mat-form-field>
-                         <div class="help-block text-right" style="margin-top:10px;"><a href="">Forget the password ?</a></div>
-                      </div>
-                         <mat-checkbox id="usersignbox" class=".ng-valid" [(ngModel)]="checkedlogin" style="font-size:15px;" name="checkedlogin" >Beni Hatırla</mat-checkbox>
-                      <div class="form-group">
-                        <button  class="btn btn-primary btn-block" (click)="signInAccount(email,password,checkedlogin)">Giriş Yap!</button>
-                      </div>
-
-                   </form>
-                </div>
-             </div>
-          </li>
-        </ul>
-      </li>
-</ul>
-</div>
-<div *ngIf="isSigned" class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-  <form class="form-inline my-2 my-lg-0" id="searchbar">
-    <input #search type="search"  [placeholder]="filled?'Search':''" [ngClass]="{'filled':filled}" [(ngModel)]="parameter"
-       (click)="filled=!filled" (blur)="filled=search.value?true:false" (keyup)="onKey($event)" list="osman" autocomplete="off" name="searchbar" >
-
-    <datalist id="osman">
-    <option *ngFor="let topic of topicList" [value]="topic">
-    </datalist>
-  </form>
-  <ul class="nav navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="javascript:">{{username}}</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="signOutAccount()" href="javascript:">Çıkış Yap</a>
-    </li>
-</ul>
-</div>
-
-</nav>
-
-</div>
-
-<nav id="bottomnavigationbar" class="navbar navbar-expand-lg navbar-light ">
-  <div class="container">
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav">
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle"  data-toggle="dropdown" href="javascript:" role="button" aria-haspopup="true" aria-expanded="false">Hikayeler</a>
-        <div class="dropdown-menu" id="dropdownmenu">
-          <a class="dropdown-item" href="#">Çok Okunanlar</a>
-          <a class="dropdown-item" href="#">Son Çıkanlar</a>
-          <a class="dropdown-item" href="#">Geçmişten Gelenler</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Senin Hikayen</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:">{{username}}</a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="javascript:" (click)="navigateToStoryCreator()">Hikaye Paylaş</a></li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="signOutAccount()" href="javascript:">Çıkış Yap</a>
+      </li>
   </ul>
   </div>
 
+  </nav>
 </div>
-</nav>
+</div>
+
+<div class="mainNav2">
+<div class="container">
+  <nav id="bottomnavigationbar" class="navbar navbar-expand-lg navbar-light ">
+
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  data-toggle="dropdown" href="javascript:" role="button" aria-haspopup="true" aria-expanded="false">Hikayeler</a>
+          <div class="dropdown-menu" id="dropdownmenu">
+            <a class="dropdown-item" href="#">Çok Okunanlar</a>
+            <a class="dropdown-item" href="#">Son Çıkanlar</a>
+            <a class="dropdown-item" href="#">Geçmişten Gelenler</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Senin Hikayen</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="javascript:" (click)="navigateToStoryCreator()">Hikaye Paylaş</a></li>
+    </ul>
+    </div>
+
+
+  </nav>
+</div>
+</div>

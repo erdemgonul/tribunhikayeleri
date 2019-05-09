@@ -9,38 +9,25 @@ import { first } from 'rxjs/operators';
 })
 export class StoryComponent implements OnInit {
   topicUrl:string;
-  storyTopic:string;
-  storyid:number;
-  storyContent:string;
-  storyAuthor:string;
-  likeCount:number;
-  publishDate:string;
+  story;
   comments=[];
   commentText:string;
-  constructor(private router: Router,private communicator:CommunicatorService) {
+  constructor(private router: Router, public communicator:CommunicatorService) {
     this.topicUrl=window.location.href;
     this.topicUrl=this.topicUrl.substr(this.topicUrl.lastIndexOf('/')+1,this.topicUrl.length);
   }
 
   ngOnInit() {
-    console.log("ee");
-
-    console.log(this.topicUrl);
-    this.communicator.getTopic(this.topicUrl).subscribe((thread) => {
-            let data=thread;
-            this.storyid=data.id;
-            this.storyTopic=data.name;
-            this.storyContent=data.content;
-            this.storyAuthor=data.createdBy;
-            this.likeCount=data.likeCount;
-            this.publishDate=data.createdOn.substr(0,data.createdOn.lastIndexOf('T'));
-
+    this.communicator.getTopic(this.topicUrl).subscribe((topic) => {
+            topic.createdOn=topic.createdOn.substr(0,topic.createdOn.lastIndexOf('T'));
+            this.story=topic;
       })
   }
+
   likeStory(){
-      this.communicator.likeStory(this.storyid).pipe(first()).subscribe(
+      this.communicator.likeStory(this.story.id).pipe(first()).subscribe(
         data => {
-            this.likeCount++;
+            this.story.likeCount++;
         },
         err => {
             console.log("fuck");

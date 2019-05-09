@@ -2,32 +2,34 @@
 
 
   <div class="row" id="row-custom" style="margin-bottom:20px;">
-    <h2>{{storyTopic}}</h2>
+    <h2>{{this.story.name}}</h2>
   </div>
 
   <div class="row justify-content-start" id="row-custom">
     <div class="col-xs-1" id="pp-div">
 
-      <img src="assets/profilePictures/{{this.story.createdBy}}.jpg" onerror="this.src='assets/defaultprofilepicture.jpg'" alt="..." class="img-thumbnail" width="80" height="80" id="pp-image">
+      <img src="assets/profilePictures/{{this.story.createdBy}}.jpg" onerror="this.src='assets/defaultprofilepicture.jpg'" alt="..." class="rounded-circle" width="70" height="70" id="pp-image">
     </div>
     <div class="col-xs-1" style="margin-left:10px;">
       <div class="row">
 
-        <h5><a href="#">{{storyAuthor}}</a></h5>
+        <h5><a href="#">{{story.createdBy}}</a></h5>
       </div>
       <div class="row">
-        <p>{{publishDate}}</p>
+        <p class="createdon">{{story.createdOn}}</p>
       </div>
     </div>
   </div>
 
   <div class="row" id="row-custom" style="margin-top:50px;">
-      <p >{{storyContent}}</p>
+      <p >{{story.content.substr(0,this.communicator.count(story.content,'.')/2+1)}}<br>
+      <img class="rounded float-left" id="paragraph-image" src="assets/fan2.JPG" alt="" ><br>
+      {{story.content.substr(this.communicator.count(story.content,'.')/2+1,story.content.length)}} </p>
   </div>
 
 
   <div class="row align-items-center" id="socialDiv">
-    <i class="far fa-thumbs-up fa-2x">{{likeCount}}</i>
+    <i class="far fa-thumbs-up fa-2x">{{story.likeCount}}</i>
     <button mat-button (click)="likeStory()" class="likeButton">Beğen!</button>
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
   </div>
@@ -47,6 +49,7 @@
         <p>{{comment.createdOn}}</p>
       </div>
       </div>
+
       <div class="row" id="row-custom">
           <p >{{comment.content}}</p>
       </div>
@@ -68,7 +71,7 @@
           </mat-form-field>
   </div>
   <div class="row justify-content-end" id="comment-creator">
-      <button mat-button (click)="submitComment(storyTopic,commentText,isAnonym)">Yorumla!</button>
+      <button mat-button (click)="submitComment(story.topic,commentText)">Yorumla!</button>
   </div>
 
 

@@ -115,6 +115,10 @@ getComments(x:string):Observable<any>{
         localStorage.removeItem('currentUser');
         sessionStorage.removeItem('currentUser');
   }
+  count(s1, letter) {
+    return ( s1.match( RegExp(letter,'g') ) || [] ).length;
+  }
 }
+
 /*
 */

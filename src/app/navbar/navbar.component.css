@@ -1,19 +1,24 @@
+.mainNav{
+  border-bottom: 1px solid rgba(0,0,0,.15);
+}
 #topnavigationbar{
 border-radius:7px;
 padding: 2px 15px 2px 15px;
 background-color: #ffffff;
+
 }
+
 #bottomnavigationbar{
 
 margin-bottom:50px;
 border-radius:0px;
 padding: 5px 15px 5px 15px;
-background-color: #3b3b3b;
+background-color: #ffffff;
 
 }
 
 #bottomnavigationbar a{
-  color:#ffffff !important;
+  color:#000000 !important;
 }
 #dropdownmenu a{
   color:inherit !important;
