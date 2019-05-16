@@ -19,7 +19,6 @@ export class CreateStoryComponent implements OnInit {
   storyText:string;
   isAnonym:boolean;
 
-  baseUrl="http://localhost:8080/";
   constructor(private router:Router,private http: HttpClient,private communicator:CommunicatorService) {
 
    }

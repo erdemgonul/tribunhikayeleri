@@ -1,31 +1,24 @@
 <div class="container">
   <div  class="story" *ngFor="let story of stories;let i=index">
-    <div class="row" id="row-custom">
-      <h2><a [routerLink]="story.name" >{{story.name}}</a></h2>
-    </div>
-    <div class="row justify-content-start" id="row-custom">
-      <div class="col-xs-1" id="pp-div">
-
-        <img src="assets/profilePictures/{{this.story.createdBy}}.jpg" onerror="this.src='assets/defaultprofilepicture.jpg'" alt="..." class="rounded-circle" width="70" height="70" id="pp-image">
+    <div class="row">
+      <div class="col">
+        <img src="assets/fan2.JPG" alt="" width="640" height="460">
       </div>
-      <div class="col-xs-1" style="margin-left:10px;">
-        <div class="row">
-
-          <h5><a href="#">{{story.createdBy}}</a></h5>
+      <div class="col">
+        <div class="row" id="row-custom">
+          <i class="material-icons">account_circle</i>
+          <h5 class="createdBy"><a href="#">{{story.createdBy}}</a></h5>
+          <i class="material-icons">calendar_today</i>
+          <h5 class="createdOn">{{story.createdOn}}</h5>
         </div>
-        <div class="row">
-          <p class="createdon">{{story.createdOn}}</p>
+        <div class="row" id="row-custom">
+          <h2 id="story_title"><a [routerLink]="story.name" >{{story.name}}</a></h2>
+        </div>
+        <div class="row" id="row-custom">
+          <p class="story_content">{{story.content}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
         </div>
       </div>
     </div>
-      <div class="row" id="row-custom">
-          <p >{{story.content}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
-      </div>
-      <div class="row align-items-center" id="socialDiv">
-        <i class="far fa-thumbs-up fa-2x">{{story.likeCount}}</i>
-        <button mat-button (click)="likeStory()" class="likeButton">Beğen!</button>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
-      </div>
 
-  </div>
+
 </div>

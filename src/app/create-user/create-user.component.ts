@@ -18,7 +18,6 @@ export class CreateUserComponent implements OnInit {
   imgAsBase64;
   errorUser:boolean;
   errorName:string;
-  baseUrl="http://localhost:8080/";
     imageuploaded;
   constructor(private router: Router,private communicator:CommunicatorService) {
 this.errorUser=false;
