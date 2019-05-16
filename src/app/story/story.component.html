@@ -1,3 +1,4 @@
+
 <div class="container">
 
 
@@ -5,20 +6,11 @@
     <h2>{{this.story.name}}</h2>
   </div>
 
-  <div class="row justify-content-start" id="row-custom">
-    <div class="col-xs-1" id="pp-div">
-
-      <img src="assets/profilePictures/{{this.story.createdBy}}.jpg" onerror="this.src='assets/defaultprofilepicture.jpg'" alt="..." class="rounded-circle" width="70" height="70" id="pp-image">
-    </div>
-    <div class="col-xs-1" style="margin-left:10px;">
-      <div class="row">
-
-        <h5><a href="#">{{story.createdBy}}</a></h5>
-      </div>
-      <div class="row">
-        <p class="createdon">{{story.createdOn}}</p>
-      </div>
-    </div>
+  <div class="row" id="row-custom">
+    <i class="material-icons">account_circle</i>
+    <h5 class="createdBy"><a href="#">{{story.createdBy}}</a></h5>
+    <i class="material-icons">calendar_today</i>
+    <h5 class="createdOn">{{story.createdOn}}</h5>
   </div>
 
   <div class="row" id="row-custom" style="margin-top:50px;">
@@ -28,16 +20,23 @@
   </div>
 
 
+
   <div class="row align-items-center" id="socialDiv">
     <i class="far fa-thumbs-up fa-2x">{{story.likeCount}}</i>
     <button mat-button (click)="likeStory()" class="likeButton">Beğen!</button>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
+
+    <div class="icon-bar">
+      <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="google"><i class="fab fa-google"></i></a>
+      <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+      <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+    </div>
   </div>
 
   <div class="row" style="border-top:1px solid black;margin-top:50px;padding-top:50px;">
     <h4>Yorumlar</h4>
   </div>
-
 
   <div  class="comment" *ngFor="let comment of comments;let i=index">
 
@@ -45,10 +44,10 @@
       <div class="col-auto mr-auto" id="authorCommentText">
         <h5><a href="#" style="color:black">{{comment.createdBy}}</a></h5>
       </div>
-      <div class="col-auto">
-        <p>{{comment.createdOn}}</p>
-      </div>
-      </div>
+        <div class="col-auto">
+          <p>{{comment.createdOn}}</p>
+        </div>
+    </div>
 
       <div class="row" id="row-custom">
           <p >{{comment.content}}</p>
@@ -58,11 +57,6 @@
       </div>
 
   </div>
-
-
-
-
-
 
 
   <div class="row" id="comment-creator" style="padding-top:20px;">

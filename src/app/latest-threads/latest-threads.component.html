@@ -15,7 +15,7 @@
           <h2 id="story_title"><a [routerLink]="story.name" >{{story.name}}</a></h2>
         </div>
         <div class="row" id="row-custom">
-          <p class="story_content">{{story.content}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
+          <p class="story_content">{{story.content.substr(0,700)}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
         </div>
       </div>
     </div>

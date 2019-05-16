@@ -32,15 +32,16 @@ a:hover{
 
 #socialDiv{
   margin:0 0 0 0 ;
-  border: 1px solid #dee2e6;
+  border: 0px solid #dee2e6;
   padding: 1rem;
   border-radius: .25rem;
 }
 #socialDiv i{
-  margin-right:20px !important;
+
 }
 .likeButton{
   margin-right:20px !important;
+  margin-left: 20px !important;
   background-color:#563D7C;
   color:#ffffff;
   vertical-align: middle;
@@ -49,4 +50,40 @@ a:hover{
   height: 28px;
   display: inline-flex;
   align-items: center;
+}
+.createdBy{
+  padding-left: 5px;
+  padding-right: 5px;
+  color: rgb(241, 140, 142);
+  font-family: "Work Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 21.6px;
+  margin-bottom: 6px ;
+  text-align: left;
+  text-transform: uppercase;
+  visibility: visible;
+
+}
+.createdOn{
+  color: rgb(241, 140, 142);
+  padding-left:5px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 21.6px;
+  margin-bottom: 5px;
+  text-align: left;
+  text-transform: uppercase;
+  visibility: visible;
+}
+.story_content{
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #999999;
+}
+#story_title{
+  margin-bottom: 24px ;
 }
