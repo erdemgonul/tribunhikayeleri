@@ -1,20 +1,20 @@
-<div class="container">
-  <div  class="story" *ngFor="let story of stories;let i=index">
+<div class="flex flex-wrap mt-2">
+  <div  class="flex  mt-16 border-b-2 border-gray-400 pb-4 w-full" *ngFor="let story of stories;let i=index">
 
-        <div class="row" id="row-custom">
-          <i class="material-icons">account_circle</i>
-          <h5 class="createdBy"><a href="#">{{story.createdBy}}</a></h5>
-          <i class="material-icons">calendar_today</i>
-          <h5 class="createdOn">{{story.createdOn}}</h5>
-        </div>
-        <div class="row" id="row-custom">
-          <h2 id="story_title"><a [routerLink]="story.name" >{{story.name}}</a></h2>
-        </div>
-        <div class="row" id="row-custom">
-          <p class="story_content">{{story.content}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
-        </div>
+    <div class="flex-col ml-12">
+      <div class="flex m-0">
+        <i class="material-icons">account_circle</i>
+        <h5 class="createdBy"><a href="#">{{story.createdBy}}</a></h5>
+        <i class="material-icons">calendar_today</i>
+        <h5 class="createdOn">{{story.createdOn}}</h5>
+      </div>
+      <div class="flex m-0 mt-2">
+        <h2 id="story_title"><a [routerLink]="story.name" >{{story.name}}</a></h2>
+      </div>
+      <div class="flex m-0">
+        <p class="story_content">{{story.content.substr(0,700)}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
+      </div>
+    </div>
   </div>
-
-
   <h3 *ngIf="stories.length == 0">Aradığınız Kriterlere Uygun Bir İçerik Bulunamadı..</h3>
 </div>
