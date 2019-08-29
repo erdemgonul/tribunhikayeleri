@@ -15,23 +15,24 @@ export class CreateUserComponent implements OnInit {
   checked:boolean;
   username:string;
   password:string;
-  imgAsBase64;
+  passwordConfirm:string;
   errorUser:boolean;
   errorName:string;
-    imageuploaded;
   constructor(private router: Router,private communicator:CommunicatorService) {
-this.errorUser=false;
- }
+    this.errorUser=false;
+  }
 
   ngOnInit() {
     this.errorUser=false;
   }
 
-  createAccount(email:string,username:string,password:string,checked:boolean){
-    if(checked){
+  createUser(){
+    console.log(this.email);
+
+    if(this.checked && this.password===this.passwordConfirm){
       console.log("hey");
       document.getElementById('useragreementbox').style.color=""
-      var userData = { "username":username,"password": username,"base64ProfilePicture":this.imgAsBase64};
+      var userData = { "email":this.email,"username":this.username,"password": this.password};
       var userJSON = JSON.stringify(userData);
 
       this.communicator.createUser(userJSON).subscribe(
@@ -47,35 +48,10 @@ this.errorUser=false;
         ()=> {}// Here call is completed. If you wish to do something
         // after call is completed(since this is an asynchronous call), this is the right place to do. ex: call another function
       );
-
-
-
     }
     else{
       console.log("wtf");
       document.getElementById('useragreementbox').style.color="red";
     }
   }
-  readfiles(files){
-      console.log('files from readfiles -  ',files[0]);
-
-      const reader = new FileReader();
-      let image = new Image();
-
-      reader.onload =  (event) =>{
-        let fileReader = event.target as FileReader;
-        //image.src = fileReader.result;
-        //image.width = 150;
-        //this.imageuploaded="<img src='" +fileReader.result + "'>";
-        //reader.result diyince dönüyo  o arrayi buranın içinde yapman lazım
-        console.log("RESULT:",reader.result);
-        this.imgAsBase64= btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result as ArrayBuffer)));
-
-      };
-      reader.readAsArrayBuffer(files[0]);
-
-    }//readfiles
-    imageChange(event){
-      this.readfiles(event.target.files);
-    }//imageChange
 }

@@ -38,7 +38,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { StoryComponent } from './story/story.component';
@@ -53,7 +52,6 @@ import {CustomUrlSerializer} from './CustomUrlSerializer';
   declarations: [
     AppComponent,
     CreateUserComponent,
-    HomeComponent,
     SigninComponent,
     CreateStoryComponent,
     StoryComponent,

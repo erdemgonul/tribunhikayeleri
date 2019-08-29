@@ -10,10 +10,10 @@
           <i class="material-icons">calendar_today</i>
           <h5 class="createdOn">{{story.createdOn}}</h5>
         </div>
-        <div class="flex m-0 mt-2">
+        <div class="flex m-0 mt-4">
           <h2 id="story_title"><a [routerLink]="story.name" >{{story.name}}</a></h2>
         </div>
-        <div class="flex m-0">
+        <div class="flex m-0 ml-1">
           <p class="story_content">{{story.content.substr(0,700)}} <a *ngIf="story.content.length>50" [routerLink]="story.name">Devamını Oku</a></p>
         </div>
       </div>

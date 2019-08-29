@@ -1,45 +1,65 @@
-
-<h2 style="text-align:center">Anılarını Paylaşmak İçin İlk Yapman Gereken Bir Hesap Yaratmak</h2>
-<div class="container" style="width:40%">
-  <div class="row">
-
+<div class="flex flex-col mt-12 items-center">
+  <div class="flex mt-4 mb-4">
+    <h2 class="align-center text-4xl text-wrap text-center">anılarını paylaşmak için ilk yapman gereken bir hesap yaratmak</h2>
   </div>
-
-  <div class="row">
-    <mat-form-field>
-      <input matInput  placeholder="Mail Adresin" [(ngModel)]="email">
-    </mat-form-field>
-  </div>
-  <div class="row">
-    <mat-form-field>
-      <mat-label>İsmin</mat-label>
-      <input matInput id="username" placeholder=""  [(ngModel)]="username">
-      <mat-hint style="color:red" *ngIf="errorUser">{{errorName}}</mat-hint>
-    </mat-form-field>
-  </div>
-  <div class="row">
-    <mat-form-field>
-      <input matInput  placeholder="Şifren" [(ngModel)]="password">
-    </mat-form-field>
-  </div>
-
-  <form>
-    <div class="form-group">
-      <label for="exampleFormControlFile1">Example file input</label>
-      <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)='imageChange($event)'>
-      <div class="row" [innerHTML]="imageuploaded">
+  <div class="flex mt-4 mb-4 justify-center">
+    <form class="">
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3">
+          <label class="block text-gray-700 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name" >
+            mail adresin
+          </label>
+        </div>
+        <div class="md:w-2/3">
+          <input name="email" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder="deneme@gmail.com" [(ngModel)]="email">
+        </div>
       </div>
-    </div>
-  </form>
-  <div class="row">
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3">
+          <label class="block text-gray-700 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name" >
+            isim
+          </label>
+        </div>
+        <div class="md:w-2/3">
+          <input  name="username" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder="deneme1907"  [(ngModel)]="username">
+        </div>
+      </div>
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3">
+          <label class="block text-gray-700 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
+            şifre
+          </label>
+        </div>
+        <div class="md:w-2/3">
+          <input name="password" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-username" type="password" placeholder="******************"  [(ngModel)]="password">
+        </div>
+      </div>
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3">
+          <label class="block text-gray-700 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
+            şifreni onayla
+          </label>
+        </div>
+        <div class="md:w-2/3">
+          <input  name="passwordConfirm" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-username" type="password" placeholder="******************" [(ngModel)]="passwordConfirm">
+        </div>
+      </div>
+      <div class="md:flex md:items-center mb-6 mt-8">
 
-    <div class="col-auto mr-auto">
-        <mat-checkbox id="useragreementbox" class=".ng-valid" [(ngModel)]="checked" >Checked</mat-checkbox>
-    </div>
-    <div class="col-auto">
-      <button mat-button (click)="createAccount(email,username,password,checked)">İlerle!</button>
-    </div>
+        <label class="md:w-full  pl-16 block text-gray-500 font-bold">
+          <input name="checked" id="useragreementbox" class="mr-2 leading-tight" type="checkbox" [(ngModel)]="checked">
+          <span class="text-m text-gray-700">
+            sözleşmeyi okudum ve onaylıyorum.
+          </span>
+        </label>
+      </div>
+
+    </form>
   </div>
-
-
-</div>
+  <div class="flex w-2/3">
+    <button (click)="createUser()"
+    class="shadow bg-teal-500  w-full  hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-3 px-4 rounded text-xl" type="button">
+      kaydol
+    </button>
+  </div>
+  </div>
