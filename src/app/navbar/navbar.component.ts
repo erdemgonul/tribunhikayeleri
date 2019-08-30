@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   username;
   parameter:string;
   hey:string;
+  open=false;
   topicList=[];
   constructor(private router: Router,private communicator:CommunicatorService) {
 
@@ -61,7 +62,10 @@ export class NavbarComponent implements OnInit {
     this.ngOnInit();
 
   }
-
+toggle(){
+  console.log("deneme")
+  this.open=!this.open;
+}
 
 
   onKey(value: KeyboardEvent) {

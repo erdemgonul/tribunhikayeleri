@@ -23,11 +23,7 @@ background-color: #ffffff;
 #dropdownmenu a{
   color:inherit !important;
 }
-a{
-  font-size:1rem;
-  line-height: 1.5;
-  font-weight: 400;
-}
+
 .navbar-brand{
   color:#000000 !important;
 }

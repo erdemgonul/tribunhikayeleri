@@ -18,13 +18,6 @@ p{
   font-size: 21px;
   font-weight: 400;
 }
-a{
-  text-decoration: none;
-  color:inherit;
-}
-a:hover{
-  color:inherit;
-}
 #pp-div{
   margin-right: 10px;
 }
