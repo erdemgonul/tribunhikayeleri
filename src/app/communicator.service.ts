@@ -60,15 +60,16 @@ export class CommunicatorService {
         return user;
       }));
     }
-  createTopic(topicname,content,isAnonym){
+  createTopic(topicname,content,isAnonym,image){
     if(!isAnonym)
       httpOptions.headers= httpOptions.headers.set('Authorization',this.currentUser.token);
     else
-      httpOptions.headers= httpOptions.headers.set('Authorization',"Basic " + btoa("anonim:anonim"));
+      httpOptions.headers= httpOptions.headers.set('Authorization',"Basic " + btoa("user:user"));
     const req = this.http.post(this.baseUrl +'topic',
     {
       "name":topicname,
       "content":content,
+      "base64encodedImg":image
     },httpOptions
     )
       .subscribe(

@@ -9,9 +9,10 @@ import { first } from 'rxjs/operators';
 })
 export class StoryComponent implements OnInit {
   topicUrl:string;
-  story;
+  story:string;
   comments=[];
   commentText:string;
+  isLoading=true;
   constructor(private router: Router, public communicator:CommunicatorService) {
     this.topicUrl=window.location.href;
     this.topicUrl=this.topicUrl.substr(this.topicUrl.lastIndexOf('/')+1,this.topicUrl.length);
@@ -21,18 +22,8 @@ export class StoryComponent implements OnInit {
     this.communicator.getTopic(this.topicUrl).subscribe((topic) => {
             topic.createdOn=topic.createdOn.substr(0,topic.createdOn.lastIndexOf('T'));
             this.story=topic;
-      })
-  }
-
-  likeStory(){
-      this.communicator.likeStory(this.story.id).pipe(first()).subscribe(
-        data => {
-            this.story.likeCount++;
-        },
-        err => {
-            console.log("fuck");
-        });
-
+            this.isLoading = false;
+          })
   }
   submitComment(storyTopic,commentText){
       this.communicator.createComment(commentText,storyTopic);
