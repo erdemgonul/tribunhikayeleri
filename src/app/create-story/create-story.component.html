@@ -1,25 +1,52 @@
-<div class="container">
-  <div class="row">
-    <h2>Bir Hikaye Paylaş</h2>
+<div class="flex  flex-col mt-6 items-center mx-8">
+  <div class="flex mt-2 mb-2">
+    <h2 class="align-center text-4xl text-wrap text-center">bir hikaye paylaş</h2>
   </div>
-  <div class="row">
-          <mat-form-field>
-            <input matInput  placeholder="başlık" [(ngModel)]="topic">
-          </mat-form-field>
+  <div class="flex flex-col mt-4 mb-2 justify-center w-full">
+      <div class="md:flex  md:items-center mb-8  ">
+        <div class="">
+          <label class=" text-gray-700 font-bold md:text-right  md:mb-0   pr-8" for="inline-full-name" >
+            başlık:
+          </label>
         </div>
-        <div class="row">
-          <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="hikayeni yaz" class="storytext" [(ngModel)]="storyText"></textarea>
-          </mat-form-field>
+        <div class="w-full">
+          <input name="topic" class="appearance-none bg-transparent  w-full text-gray-700
+           mr-3 py-1 px-2 leading-tight focus:outline-none border-b-2 " type="text" placeholder="Jane Doe" aria-label="Full name" [(ngModel)]="topic">
         </div>
-
-  <div class="row">
-    <div class="col-auto mr-auto">
-      <mat-checkbox id="anonim" class=".ng-valid" [(ngModel)]="isAnonym">anonim olarak yaz</mat-checkbox>
-    </div>
-    <div class="col-auto">
-      <button mat-button (click)="submitStory(topic,storyText,isAnonym)">Paylaş!</button>
-    </div>
+      </div>
+      <div class="flex-col md:items-center mb-2  justify-center">
+          <div class="mb-2">
+            <label class=" text-gray-700 font-bold md:text-right mb-1 md:mb-0   pr-8" for="inline-full-name" >
+              içerik:
+            </label>
+          </div>
+          <div class="w:full">
+            <textarea class="mt-1 w-full border rounded focus:outline-none focus:shadow-outline" rows="15" placeholder="Enter some long form content." [(ngModel)]="storyText"></textarea>
+          </div>
+      </div>
+      <div class="md:flex text-right mb-2 mt-2">
+        <label class="md:w-full   block text-gray-500 font-bold">
+          <input name="checked" id="useragreementbox" class="mr-2 leading-tight" type="checkbox" [(ngModel)]="checked">
+          <span class="text-m text-gray-700">
+            anonim olarak paylaş
+          </span>
+        </label>
+      </div>
+      <div class="md:flex flex-col  mb-6 mt-2">
+        <div class="flex mb-2">
+          <label class=" text-gray-700 font-bold md:text-right  md:mb-0   pr-8" for="inline-full-name" >
+            gönderiye koymak istediğin resmi ekleyebilirsin.
+          </label>
+        </div>
+        <div class="flex">
+            <input type="file" (change)="onFileChanged($event)">
+        </div>
+      </div>
   </div>
-
+  <div class="flex w-full pb-8">
+    <button (click)="submitStory()"
+    class="shadow bg-teal-500  w-full  hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-3 px-4 rounded text-xl" type="button">
+      gönder
+    </button>
+  </div>
 </div>

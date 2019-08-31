@@ -25,11 +25,11 @@ export class CreateStoryComponent implements OnInit {
 
   ngOnInit() {
   }
-  submitStory(topic:string,storyText:string,isAnonym:boolean){
-    if(!isAnonym){
-      this.communicator.createTopic(topic,storyText,false);
+  submitStory(){
+    if(!this.isAnonym){
+      this.communicator.createTopic(this.topic,this.storyText,false);
     }else{
-      this.communicator.createTopic(topic,storyText,true);
+      this.communicator.createTopic(this.topic,this.storyText,true);
     }
 
   }

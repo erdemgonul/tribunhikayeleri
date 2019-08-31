@@ -20,12 +20,19 @@ export class CommunicatorService {
   autoSigned;
   isUserSigned;
   baseUrl="http://127.0.0.1:8080/";
-
+  homePage="http://127.0.0.1:4200/";
   constructor(private http: HttpClient,private router:Router) {
+    console.log("USER");
     if(localStorage.getItem("currentUser")!=null){
       this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
       this.autoSigned=true;
       this.isUserSigned=true;
+      console.log("DENEME");
+    }
+    if(sessionStorage.getItem("currentUser")!=null){
+      this.currentUser=JSON.parse(sessionStorage.getItem("currentUser"));
+      this.isUserSigned=true;
+      console.log("DENEME");
     }
   }
 

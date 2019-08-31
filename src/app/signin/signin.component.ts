@@ -23,15 +23,13 @@ export class SigninComponent implements OnInit {
     this.errorUser=false;
   }
 
-  signInAccount(email:string,password:string,checked:boolean){
+  signInAccount(){
 
-      var userData = {'username': email, 'password' : password};
-      var userJSON = JSON.stringify(userData);
 
-      this.communicator.signUser(email,password,checked).pipe(first())
+      this.communicator.signUser(this.email,this.password,this.checked).pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigateByUrl('');
+                  window.location.replace(this.communicator.homePage);
                 },
                 error => {
                     console.log("fuck");
